@@ -22,6 +22,7 @@ docs/html
 
 # Local build scripts
 build-deps-balazs.sh
+build/
 
 # Virtual environments
 .venv

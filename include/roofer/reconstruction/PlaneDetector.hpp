@@ -33,9 +33,9 @@ namespace roofer::reconstruction {
     int metrics_plane_min_points = 20;
     float metrics_plane_epsilon = 0.2;
     float metrics_plane_normal_threshold = 0.75;
-    float metrics_is_horizontal_threshold = 0.995;
+    float metrics_is_horizontal_threshold = 0.97;
     float metrics_probability_ransac = 0.05;
-    float metrics_cluster_epsilon_ransac = 0.3;
+    float metrics_cluster_epsilon_ransac = 0.2;
     float metrics_is_wall_threshold = 0.3;
     int n_refit = 5;
     bool use_ransac = false;
