@@ -7,10 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-beta.3] - 2025-08-19
+
+### Fixed
+- The `--no-clear-insuffient` flag now works as expected.
+
+### Changed
+- In case of a failure during reconstruction, the mesh geomtries of all LoDs are cleared.
+- Extrusion_mode is now set to 'fail' if reconstruction fails
+- Only define CGAL_ALWAYS_ROUND_TO_NEAREST on arm64. This fixes some issues with infinite loops on other architectures.
+
+## [1.0.0-beta.2] - 2025-08-04
+
 ### Added
 - install script for curl pipe install
 - automatic versioning
 - CLI flag to disable input polygon simplification:: `--no-simplify`
+- allow to omit output attributes by renaming them to an empty string
 
 ### Fixed
 - fix handling of negative flags like --no-lod22
@@ -19,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix bug causing skipping reconstruction of some buildings with flat roofs
 - fix issue with SegmentRasteriser that sometimes led to very high memory usage
 - fix bug that caused incorrect height attribute calculation foor roofparts
+- fix incorrect use of reserve/resize
 
 ### Changed
 - WKT logging from geos module now prints true coordinates instead of translated ones

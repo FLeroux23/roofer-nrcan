@@ -90,7 +90,7 @@ namespace fs = std::filesystem;
 
 #include "config.hpp"
 
-enum ExtrusionMode { STANDARD, LOD11_FALLBACK, SKIP };
+enum ExtrusionMode { STANDARD, LOD11_FALLBACK, SKIP, FAIL };
 
 /**
  * @brief A single building object
@@ -682,11 +682,28 @@ int main(int argc, const char* argv[]) {
                       std::chrono::duration_cast<std::chrono::milliseconds>(
                           std::chrono::high_resolution_clock::now() - start)
                           .count());
-            } catch (...) {
+            } catch (const std::exception& e) {
+              building_object_ref.building.multisolids_lod12.clear();
+              building_object_ref.building.multisolids_lod13.clear();
+              building_object_ref.building.multisolids_lod22.clear();
               building_object_ref.progress = RECONSTRUCTION_FAILED;
+              building_object_ref.building.extrusion_mode = FAIL;
               auto& logger = roofer::logger::Logger::get_logger();
-              logger.warning("[reconstructor] reconstruction failed for: {}",
-                             building_object_ref.building.jsonl_path.string());
+              logger.warning(
+                  "[reconstructor] reconstruction failed for: {}. Exception: "
+                  "{}",
+                  building_object_ref.building.jsonl_path.string(), e.what());
+            } catch (...) {
+              building_object_ref.building.multisolids_lod12.clear();
+              building_object_ref.building.multisolids_lod13.clear();
+              building_object_ref.building.multisolids_lod22.clear();
+              building_object_ref.progress = RECONSTRUCTION_FAILED;
+              building_object_ref.building.extrusion_mode = FAIL;
+              auto& logger = roofer::logger::Logger::get_logger();
+              logger.warning(
+                  "[reconstructor] reconstruction failed for: {}. Unknown "
+                  "exception.",
+                  building_object_ref.building.jsonl_path.string());
             }
             {
               std::scoped_lock lock_reconstructed{
@@ -930,6 +947,9 @@ int main(int argc, const char* argv[]) {
                     break;
                   case SKIP:
                     extrusion_mode_str = "skip";
+                    break;
+                  case FAIL:
+                    extrusion_mode_str = "fail";
                     break;
                   default:
                     extrusion_mode_str = "unknown";

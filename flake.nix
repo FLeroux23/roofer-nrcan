@@ -56,6 +56,7 @@
             VCPKG_ROOT = "${pkgs.vcpkg}/share/vcpkg";
             UV_NO_BINARY = 1;
             # VCPKG_FORCE_SYSTEM_BINARIES = 1;
+            scm_version = "unknown";
 
             shellHook = ''
               ${pkgs.lib.optionalString pkgs.stdenv.isDarwin ''
@@ -66,7 +67,7 @@
               echo "Updating and activating python environment..."
               uv sync
               source .venv/bin/activate
-              export pybind11_ROOT="$(python -m pybind11 --cmakedir)"
+              export pybind11_DIR="$(python -m pybind11 --cmakedir)"
               echo "Roofer dev shell with vcpkg is ready"
             '';
           };
