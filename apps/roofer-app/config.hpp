@@ -159,10 +159,10 @@ struct RooferConfig {
   int plane_detect_min_points = 15;
   float plane_detect_epsilon = 0.300000;
   float plane_detect_normal_angle = 0.750000;
-  float line_detect_epsilon = 1.000000;
+  float line_detect_epsilon = 0.400000;
   float thres_alpha = 0.250000;
-  float thres_reg_line_dist = 0.800000;
-  float thres_reg_line_ext = 3.000000;
+  float thres_reg_line_dist = 0.500000;
+  float thres_reg_line_ext = 1.500000;
 
   // output attribute names
   std::string a_success = "rf_success";

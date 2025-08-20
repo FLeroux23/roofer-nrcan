@@ -29,7 +29,7 @@ namespace roofer::misc {
 
   struct Val3datorConfig {
     // bool log_invalids=false;
-    float tol_planarity_d2p_ = 0.01;
+    float tol_planarity_d2p_ = 0.0001;
     float tol_planarity_normals_ = 20;
   };
 
