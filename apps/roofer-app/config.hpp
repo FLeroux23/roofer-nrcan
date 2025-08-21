@@ -104,6 +104,7 @@ struct RooferConfig {
   // crop parameters
   float ceil_point_density = 20;
   float cellsize = 0.5;
+  float min_point_density_thres = 2.0;
   int lod11_fallback_area = 69000;
   float lod11_fallback_density = 5;
   roofer::arr2f tilesize = {1000, 1000};
@@ -408,6 +409,12 @@ struct RooferConfigHandler {
     crop.add("ceil-point-density",
              "Enforce this point density ceiling on each building pointcloud.",
              cfg_.ceil_point_density, {check::HigherThan<float>(0)});
+    crop.add("min-point-density-threshold",
+             "Absolute minimum point density threshold (points/m²) below which "
+             "buildings are considered to have insufficient pointcloud data. "
+             "This prevents buildings with adequate density from being flagged as "
+             "insufficient in tiles with very high-density buildings.",
+             cfg_.min_point_density_threshold, {check::HigherOrEqualTo<float>(0)});
     crop.add("cellsize",
              "Cellsize used for quick pointcloud analysis (eg. point density"
              " and nodata regions).",
