@@ -205,7 +205,7 @@ namespace roofer::io {
      *    cov_thres = mean_density - coverage_threshold * std_dev_density
      */
     void do_post_process(float& ground_percentile, float& max_density_delta,
-                         float& coverage_threshold, vec1f& poly_areas,
+                         float& min_density_thres, vec1f& poly_areas,
                          vec1i& poly_pt_counts_bld, vec1i& poly_pt_counts_grd,
                          vec1f& poly_densities) {
       // compute poly properties
@@ -329,27 +329,11 @@ namespace roofer::io {
       }
 
       // clear footprints with very low coverage (ie. underground footprints)
-      // TODO: improve method for computing mean_density
-      float total_cnt = 0, total_area = 0;
-      for (auto& [poly_i, info] : poly_info) {
-        total_cnt += info.pt_count_bld + info.pt_count_grd;
-        total_area += info.area;
-      }
-      float mean_density = total_cnt / total_area;
-      float diff_sum = 0;
-      for (auto& [poly_i, info] : poly_info) {
-        diff_sum += std::pow(mean_density - (info.pt_count_bld / info.area), 2);
-      }
-      float std_dev_density = std::sqrt(diff_sum / poly_info.size());
-      logger.debug("Mean point density = {}", mean_density);
-      logger.debug("Standard deviation = {}", std_dev_density);
-
-      float cov_thres = mean_density - coverage_threshold * std_dev_density;
       for (size_t poly_i = 0; poly_i < polygons.size(); ++poly_i) {
         auto& info = poly_info[poly_i];
 
         pointcloud_insufficient.push_back((info.pt_count_bld / info.area) <
-                                          cov_thres);
+                                          min_density_thres);
         // info.pt_count = point_cloud.size();
         poly_areas.push_back(float(info.area));
         poly_pt_counts_bld.push_back(int(info.pt_count_bld));
