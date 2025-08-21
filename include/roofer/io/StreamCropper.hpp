@@ -30,6 +30,7 @@ namespace roofer::io {
     float buffer = 1.0;
     float ground_percentile = 0.05;
     float max_density_delta = 0.05;
+    float min_density_thres = 2.0;
     float coverage_threshold = 2.0;
     int ground_class = 2;
     int building_class = 6;
