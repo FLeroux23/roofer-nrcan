@@ -97,7 +97,8 @@ bool crop_tile(const roofer::TBox<double>& tile,
         lasfiles, footprints, buffered_footprints, ipc.building_clouds,
         ipc.ground_elevations, ipc.acquisition_years,
         ipc.pointcloud_insufficient, polygon_extent,
-        {.ground_class = ipc.grnd_class,
+        {.min_density_threshold = cfg.min_point_density_threshold,
+         .ground_class = ipc.grnd_class,
          .building_class = ipc.bld_class,
          .use_acquisition_year = static_cast<bool>(yoc_vec)});
     if (ipc.date != 0) {
