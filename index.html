@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Getting started" href="getting_started.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>roofer 1.0.0-beta.5 documentation</title>
+        <title>roofer 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -169,7 +169,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">roofer 1.0.0-beta.5 documentation</div></a>
+      <a href="#"><div class="brand">roofer 1.0.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -193,7 +193,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
   
   
-  <span class="sidebar-brand-text">roofer 1.0.0-beta.5 documentation</span>
+  <span class="sidebar-brand-text">roofer 1.0.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -257,7 +257,7 @@
         <article role="main" id="furo-main-content">
           <section id="roofer-automatic-building-reconstruction-from-pointclouds">
 <h1>roofer - automatic building reconstruction from pointclouds<a class="headerlink" href="#roofer-automatic-building-reconstruction-from-pointclouds" title="Link to this heading">¶</a></h1>
-<p><strong>roofer</strong> performs fully automatic LoD2 building reconstruction from a pointcloud and a building roofprint polygon. It was originally developed, and is still used, to create the <a class="reference external" href="https://3dbag.nl">3DBAG dataset</a>.</p>
+<p><strong>roofer</strong> performs fully automatic LoD2 building reconstruction from a pointcloud and a building roofprint polygon. It was originally developed, and is still used, to create the <a class="reference external" href="https://3dbag.nl">3DBAG dataset</a>. To use it, read <a class="reference external" href="https://3dbag.github.io/roofer/getting_started.html">how to get started</a>.</p>
 <p><img alt="Building reconstruction with roofer" src="https://raw.githubusercontent.com/3DBAG/roofer/refs/heads/develop/docs/_static/img/banner.png" /></p>
 <section id="highlights">
 <h2>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">¶</a></h2>
@@ -274,10 +274,6 @@
 <h2>Documentation and Source Code<a class="headerlink" href="#documentation-and-source-code" title="Link to this heading">¶</a></h2>
 <p>Documentation is provided at <a class="reference external" href="https://3dbag.github.io/roofer/">https://3dbag.github.io/roofer/</a>
 The source code is available at <a class="reference external" href="https://github.com/3DBAG/roofer">https://github.com/3DBAG/roofer</a></p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Roofer is currently still under active development and subject to breaking changes.</p>
-</div>
 </section>
 <section id="origin">
 <h2>Origin<a class="headerlink" href="#origin" title="Link to this heading">¶</a></h2>
@@ -323,8 +319,9 @@ From 2022 onwards, <a class="reference external" href="https://3dgi.nl">3DGI</a>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developers.html">Building from source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developers.html#compilation-with-conan">Compilation with Conan</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developers.html#compilation-with-nix">Compilation with Nix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developers.html#compilation-without-nix">Compilation without Nix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers.html#documentation">Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_cpp.html">API Reference C++</a><ul>
@@ -332,9 +329,9 @@ From 2022 onwards, <a class="reference external" href="https://3dgi.nl">3DGI</a>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_py.html">API Reference Python</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_py.html#roofer.ReconstructionConfig"><code class="docutils literal notranslate"><span class="pre">ReconstructionConfig</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_py.html#roofer.reconstruct"><code class="docutils literal notranslate"><span class="pre">reconstruct()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_py.html#roofer.triangulate_mesh"><code class="docutils literal notranslate"><span class="pre">triangulate_mesh()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_py.html#roofer.ReconstructionConfig"><code class="docutils literal notranslate"><span class="pre">ReconstructionConfig</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="related_software.html">Related software</a><ul>
@@ -415,7 +412,7 @@ From 2022 onwards, <a class="reference external" href="https://3dgi.nl">3DGI</a>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=f0dcd5a7"></script>
+</div><script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>
